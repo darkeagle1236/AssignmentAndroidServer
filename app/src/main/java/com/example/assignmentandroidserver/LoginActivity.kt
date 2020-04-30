@@ -43,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
                 if(result.size > 0){
                     Toast.makeText(this,"Đăng nhập thành công !", Toast.LENGTH_SHORT)
                     var i = Intent(this,MainActivity::class.java)
+                    i.putExtra("username",result[0].username)
                     startActivity(i)
                 }
                 else{

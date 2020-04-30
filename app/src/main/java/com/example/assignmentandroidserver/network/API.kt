@@ -1,8 +1,6 @@
 package com.example.assignmentandroidserver.network
 
-import com.example.assignmentandroidserver.model.GetAllProductReponse
-import com.example.assignmentandroidserver.model.LoginResponse
-import com.example.assignmentandroidserver.model.RegisterResponse
+import com.example.assignmentandroidserver.model.*
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
@@ -39,5 +37,11 @@ object API {
 
         @GET("getAllProduct")
         fun getAllProduct():Observable<GetAllProductReponse>
+        @FormUrlEncoded
+        @POST("getCartById")
+        fun getAllCartItem(@Field("username") username: String):Observable<GetCartByIdResponse>
+        @POST("addItemToCart")
+        @FormUrlEncoded
+        fun addItemToCart(@Field("username") username: String, @Field("productName") productName: String,@Field("productType") productType: String,@Field("price") price: Int):Observable<AddItemToCartResponse>
     }
 }
